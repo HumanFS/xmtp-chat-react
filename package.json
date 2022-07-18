@@ -23,6 +23,7 @@
   "dependencies": {
     "@headlessui/react": "^1.4.3",
     "@heroicons/react": "^1.0.5",
+    "@mantine/core": "^4.2.12",
     "@xmtp/xmtp-js": "^4.3.1",
     "ethers": "^5.5.3",
     "imagemin-svgo": "^9.0.0",
