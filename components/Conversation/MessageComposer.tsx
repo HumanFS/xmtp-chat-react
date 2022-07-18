@@ -12,23 +12,23 @@ type MessageComposerProps = {
 const MessageComposer = ({ onSend }: MessageComposerProps): JSX.Element => {
   const [message, setMessage] = useState('')
   const router = useRouter()
+  const messageFromUrl = router.query.message as string || ''
 
   useEffect(function() {
     function sendMessageFromUrl() {
-      const fromUrl = router.query.message as string || ''
-      setMessage(fromUrl)
-      if (fromUrl) {
+      setMessage(messageFromUrl)
+      if (messageFromUrl) {
         const lastMessage = localStorage.getItem('lastMessage')
-        if (lastMessage !== fromUrl) {
-          localStorage.setItem('lastMessage', fromUrl)
-          onSend(fromUrl).then(() => {
+        if (lastMessage !== messageFromUrl) {
+          localStorage.setItem('lastMessage', messageFromUrl)
+          onSend(messageFromUrl).then(() => {
             setMessage('')
           })
         }
       }
     }
     sendMessageFromUrl();
-  }, [router.query.recipientWalletAddr, router.query.message, onSend])
+  }, [router.query.recipientWalletAddr, router.query.message, onSend, messageFromUrl])
 
   const onMessageChange = useCallback(
     (e: React.FormEvent<HTMLInputElement>) => setMessage(e.currentTarget.value),
