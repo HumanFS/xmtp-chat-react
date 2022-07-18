@@ -2,10 +2,10 @@ import useXmtp from '../hooks/useXmtp'
 import { classNames } from '../helpers'
 import {
   LinkIcon,
-  BookOpenIcon,
-  UserGroupIcon,
+  // BookOpenIcon,
+  // UserGroupIcon,
   ChevronRightIcon,
-  ArrowSmRightIcon, BackspaceIcon,
+  // ArrowSmRightIcon, BackspaceIcon,
 } from '@heroicons/react/solid'
 
 type XmtpInfoRowProps = {
