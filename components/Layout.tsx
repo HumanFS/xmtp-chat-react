@@ -22,8 +22,11 @@ const NavigationColumnLayout: React.FC = ({ children }) => (
 
 const NavigationHeaderLayout: React.FC = ({ children }) => (
   <div className="h-[72px] bg-p-600 flex items-center justify-between flex-shrink-0 px-4">
-    <Link href="/" passHref={true}>
-      <img className="h-8 w-auto" src="/xmtp-icon.png" alt="XMTP" />
+    <Link href="https://sshr-hackfs.vercel.app/" passHref={true}>
+      <div className="flex text-white">
+        <img className="h-8 w-auto" src="/xmtp-icon.png" alt="XMTP" />
+        <span className="h-8 w-auto pl-3">SSHR Messenger</span>
+      </div>
     </Link>
     {children}
   </div>

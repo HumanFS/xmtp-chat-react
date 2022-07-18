@@ -66,10 +66,20 @@ const DateDivider = ({ date }: { date?: Date }): JSX.Element => (
 )
 
 const ConversationBeginningNotice = (): JSX.Element => (
-  <div className="flex align-items-center justify-center pb-4">
-    <span className="text-gray-300 text-sm font-semibold">
-      This is the beginning of the conversation
-    </span>
+  <div className="text-center align-items-center justify-center pb-4">
+      <div className="text-black-300 text-sm font-semibold">
+          {/*This is the beginning of the conversation*/}
+          Press the green arrow to share your data  <br/>
+      </div>
+      <div className="text-black-300 text-sm font-semibold">
+          {/*This is the beginning of the conversation*/}
+          Click the message icon on the left to close messenger  <br/>
+      </div>
+    <div className="text-gray-500 text-sm font-semibold">
+      {/*This is the beginning of the conversation*/}
+        Powered by XMTP
+    </div>
+
   </div>
 )
 

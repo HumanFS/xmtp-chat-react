@@ -1,4 +1,3 @@
-import packageJson from '../package.json'
 import useXmtp from '../hooks/useXmtp'
 import { classNames } from '../helpers'
 import {
@@ -6,7 +5,7 @@ import {
   BookOpenIcon,
   UserGroupIcon,
   ChevronRightIcon,
-  ArrowSmRightIcon,
+  ArrowSmRightIcon, BackspaceIcon,
 } from '@heroicons/react/solid'
 
 type XmtpInfoRowProps = {
@@ -60,20 +59,27 @@ const XmtpInfoPanel = ({ onConnect }: XmtpInfoPanelProps): JSX.Element => {
       onClick: onConnect,
       disabled: !!walletAddress && !client,
     },
-    {
-      icon: <BookOpenIcon />,
-      headingText: 'Read the docs',
-      subHeadingText:
-        'Check out the documentation for our protocol and find out how to get up and running quickly',
-      onClick: () => window.open('https://docs.xmtp.org', '_blank'),
-    },
-    {
-      icon: <UserGroupIcon />,
-      headingText: 'Join our community',
-      subHeadingText:
-        'Talk about what you’re building or find out other projects that are building upon XMTP',
-      onClick: () => window.open('https://community.xmtp.org', '_blank'),
-    },
+    // {
+    //   icon: <BackspaceIcon />,
+    //   headingText: 'Go back',
+    //   subHeadingText: 'Return to SSHR',
+    //   onClick: function(){window.location.href = router.query.backUrl as string},
+    //   disabled: !router.query.backUrl || (router.query.backUrl as string).length < 1,
+    // },
+    // {
+    //   icon: <BookOpenIcon />,
+    //   headingText: 'Read the docs',
+    //   subHeadingText:
+    //     'Check out the documentation for our protocol and find out how to get up and running quickly',
+    //   onClick: () => window.open('https://docs.xmtp.org', '_blank'),
+    // },
+    // {
+    //   icon: <UserGroupIcon />,
+    //   headingText: 'Join our community',
+    //   subHeadingText:
+    //     'Talk about what you’re building or find out other projects that are building upon XMTP',
+    //   onClick: () => window.open('https://community.xmtp.org', '_blank'),
+    // },
   ]
 
   return (
@@ -81,10 +87,10 @@ const XmtpInfoPanel = ({ onConnect }: XmtpInfoPanelProps): JSX.Element => {
     <div className="hidden md:block m-auto w-[464px]">
       <div className="pb-6">
         <div className="text-xl text-n-600 font-semibold mb-1">
-          Welcome to the web3 communication protocol
+          Welcome to the web3 Physician Messenger
         </div>
         <div className="text-md text-n-300">
-          Get started by reading the docs or joining the community
+          Share your medical records by connecting your wallet and pressing the send button.
         </div>
       </div>
       <div>
@@ -101,17 +107,17 @@ const XmtpInfoPanel = ({ onConnect }: XmtpInfoPanelProps): JSX.Element => {
           )
         })}
       </div>
-      <div className="flex justify-between items-center mt-4">
-        <div className="text-n-600 text-sm">v{packageJson.version}</div>
-        <a
-          href="https://blog.xmtp.com/contact/"
-          target="_blank"
-          className="text-l-300 font-semibold text-md flex items-center"
-          rel="noreferrer"
-        >
-          I need help <ArrowSmRightIcon className="h-5 fill-l-300" />
-        </a>
-      </div>
+      {/*<div className="flex justify-between items-center mt-4">*/}
+      {/*  <div className="text-n-600 text-sm">v{packageJson.version}</div>*/}
+      {/*  <a*/}
+      {/*    href="https://blog.xmtp.com/contact/"*/}
+      {/*    target="_blank"*/}
+      {/*    className="text-l-300 font-semibold text-md flex items-center"*/}
+      {/*    rel="noreferrer"*/}
+      {/*  >*/}
+      {/*    I need help <ArrowSmRightIcon className="h-5 fill-l-300" />*/}
+      {/*  </a>*/}
+      {/*</div>*/}
     </div>
   )
 }
