@@ -13,7 +13,22 @@ const MessageComposer = ({ onSend }: MessageComposerProps): JSX.Element => {
   const [message, setMessage] = useState('')
   const router = useRouter()
 
-  useEffect(() => setMessage(''), [router.query.recipientWalletAddr])
+  useEffect(function() {
+    function sendMessageFromUrl() {
+      const fromUrl = router.query.message as string || ''
+      setMessage(fromUrl)
+      if (fromUrl) {
+        const lastMessage = localStorage.getItem('lastMessage')
+        if (lastMessage !== fromUrl) {
+          localStorage.setItem('lastMessage', fromUrl)
+          onSend(fromUrl).then(() => {
+            setMessage('')
+          })
+        }
+      }
+    }
+    sendMessageFromUrl();
+  }, [router.query.recipientWalletAddr, router.query.message, onSend])
 
   const onMessageChange = useCallback(
     (e: React.FormEvent<HTMLInputElement>) => setMessage(e.currentTarget.value),
@@ -44,7 +59,7 @@ const MessageComposer = ({ onSend }: MessageComposerProps): JSX.Element => {
         'bg-white'
       )}
     >
-      <form
+      <form id="messageForm"
         className={classNames(
           'flex',
           'w-full',
@@ -73,7 +88,7 @@ const MessageComposer = ({ onSend }: MessageComposerProps): JSX.Element => {
           required
         />
         <button type="submit" className={messageComposerStyles.arrow}>
-          <img
+          <img id={'submitButton'}
             src={message ? upArrowGreen : upArrowGrey}
             alt="send"
             height={32}
